@@ -1,0 +1,413 @@
+/* =========================
+   BASE STYLES
+============================= */
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #fff;
+  color: #222;
+  /* Smooth font rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   THEME SUMMARY TABLE
+   Positioned top right, responsive
+============================= */
+.theme-summary {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 15px;
+  z-index: 900;
+}
+
+#themeSummaryTable {
+  transition: max-height 0.3s ease;
+  overflow: hidden;
+}
+
+
+.theme-summary h2 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: #222;
+  font-weight: 700;
+}
+
+.theme-summary table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.theme-summary th,
+.theme-summary td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+  color: #444;
+}
+
+.theme-summary th {
+  background-color: #3a86ff;
+  color: white;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.theme-summary tr:nth-child(even) {
+  background-color: #f9fbff;
+}
+
+.theme-summary tr:hover {
+  background-color: #e5f0ff;
+  cursor: default;
+}
+
+/* =========================
+   TOP ACTIONS BUTTONS
+============================= */
+.top-actions {
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.top-actions .button-link,
+.top-actions button {
+  padding: 10px 16px;
+  background: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.top-actions .button-link:hover,
+.top-actions button:hover {
+  background: #265cbf;
+}
+
+#deleteAllBtn {
+  background: #d64545;
+}
+
+#deleteAllBtn:hover {
+  background: #a82b2b;
+  color: white;
+}
+
+/* =========================
+   CALENDAR NAVIGATION
+============================= */
+.calendar-nav {
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.calendar-nav a {
+  color: #3a86ff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  cursor: pointer;
+}
+
+.calendar-nav a:hover {
+  color: #265cbf;
+}
+
+.calendar-nav strong {
+  font-weight: 700;
+  color: #333;
+}
+
+/* =========================
+   CALENDAR TABLE
+============================= */
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar th,
+.calendar td {
+  border: 1px solid #ccc;
+  text-align: center;
+  padding: 10px;
+  width: 14.28%; /* 7 days */
+  height: 60px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  user-select: none; /* prevent text selection on click */
+}
+
+.calendar td:hover {
+  background-color: #eef4ff;
+}
+
+.calendar-day.scheduled {
+  background-color: #cfe9d6;
+  font-weight: bold;
+  color: #246b29;
+}
+
+/* =========================
+   MODAL STYLES
+============================= */
+.modal {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  z-index: 1000;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto; /* allow scroll on small screens */
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 460px;
+  box-sizing: border-box;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease;
+}
+
+.modal-content input:focus,
+.modal-content textarea:focus,
+.modal-content select:focus {
+  border-color: #3a86ff;
+  outline: none;
+}
+
+.modal-content button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  background: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.modal-content button:hover {
+  background: #265cbf;
+}
+
+/* Close button for modals */
+.close {
+  float: right;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 1;
+  color: #666;
+  transition: color 0.2s ease;
+}
+
+.close:hover {
+  color: #000;
+}
+
+/* =========================
+   QUOTE TABLE
+============================= */
+.quote-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+  box-shadow: 0 2px 5px rgb(0 0 0 / 0.05);
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 15px;
+  background: #fff;
+}
+
+.quote-table th,
+.quote-table td {
+  border: 1px solid #ddd;
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.quote-table th {
+  background: #f7f7f7;
+  font-weight: 700;
+  color: #444;
+}
+
+.quote-table tbody tr:hover {
+  background-color: #f0f8ff;
+}
+
+/* =========================
+   FILTER FORM
+============================= */
+#filterForm {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+#filterForm label {
+  font-weight: 600;
+  color: #333;
+}
+
+#filterForm select,
+#filterForm input[type="text"] {
+  padding: 6px 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#filterForm button {
+  padding: 8px 16px;
+  background: #3a86ff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#filterForm button:hover {
+  background: #265cbf;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+============================= */
+@media (max-width: 1024px) {
+  /* Reduce theme summary size and reposition */
+  .theme-summary {
+    position: static;
+    width: 100%;
+    max-height: none;
+    margin-bottom: 25px;
+    box-shadow: none;
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Stack top actions vertically on tablets and smaller */
+  .top-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Filter form stack */
+  #filterForm {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Calendar cells height smaller for mobile */
+  .calendar th,
+  .calendar td {
+    padding: 8px;
+    height: 48px;
+  }
+
+  /* Font size adjustments */
+  body {
+    padding: 15px 10px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  /* Quote table smaller font for mobile */
+  .quote-table {
+    font-size: 13px;
+  }
+
+  /* Modal content max width smaller on mobile */
+  .modal-content {
+    max-width: 90%;
+    padding: 15px;
+  }
+}
+.theme-color {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.scheduled-quote {
+  background-color: #e6ffe6 !important;
+}
