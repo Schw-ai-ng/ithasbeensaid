@@ -38,14 +38,18 @@ for ($day = 1; $day <= $daysInMonth; $day++, $currentDay++) {
   $class = $isScheduled ? 'scheduled' : '';
   echo "<td class='calendar-day $class' data-date='$dateStr'>$day</td>";
 
-  if (($currentDay + $startDayOfWeek - 1) % 7 == 0) {
+  // Break the row after every Sunday
+  if ((($day + $startDayOfWeek - 1) % 7) == 0) {
     echo "</tr><tr>";
   }
 }
 
-while (($currentDay + $startDayOfWeek - 1) % 7 != 1) {
-  echo "<td></td>";
-  $currentDay++;
+// Fill remaining cells of the last row
+$remainder = ($daysInMonth + $startDayOfWeek - 1) % 7;
+if ($remainder !== 0) {
+  for ($i = $remainder; $i < 7; $i++) {
+    echo "<td></td>";
+  }
 }
 
 echo "</tr></table>";
