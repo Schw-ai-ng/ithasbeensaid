@@ -1,0 +1,8 @@
+{
+  "name": "ithasbeensaid",
+  "version": "1.0.0",
+  "description": "Quote Dashboard website",
+  "scripts": {
+    "test": "echo \"No tests specified\" && exit 1"
+  }
+}
